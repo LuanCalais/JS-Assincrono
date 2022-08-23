@@ -1,7 +1,7 @@
 // Promisses - Retorna imediatamente uma promessa de que no futuro irá trazer um valor para aquela informação
 // Obs - Promisses tmb utilizam CallBack
 // Vantagem Promisses - Código organizado, crescendo para baixo
-// Desvantagem Promisses - 
+// Desvantagem Promisses - Sintaxe mais Complicada que das funções async
 
 const fs = require('fs')
 
@@ -23,13 +23,16 @@ const readFile = file => new Promise((resolve, reject) => {
 }) 
 
 // Chamada usando a palava 'then'
-readFile('es1.txt')
+const promessa = readFile('es1.txt')
     .then(contents => {
         console.log(String(contents))
         return readFile('es2.txt')
     }).then(contents => {
         console.log(String(contents))
+    }).then(() =>{
+        console.log(promessa);
     })
+
 
 console.log(1)
 console.log(2)
